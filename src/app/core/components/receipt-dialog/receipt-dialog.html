@@ -1,0 +1,51 @@
+<p-dialog
+  [visible]="visible()"
+  [modal]="true"
+  [closable]="false"
+  [dismissableMask]="false"
+  styleClass="fs-receipt-dialog"
+  [style]="{ width: '480px', maxWidth: '95vw' }">
+  @if (order()) {
+    <div class="relative bg-[var(--fs-parchment)] p-[40px_34px_32px] text-center">
+      <button
+        class="absolute top-3 right-3 bg-transparent border border-[rgba(43,35,22,.3)] w-[28px] h-[28px] text-[11px] cursor-pointer text-[var(--fs-muted)] flex items-center justify-center hover:bg-[rgba(43,35,22,.08)]"
+        (click)="close.emit()">✕</button>
+      <div class="text-[8px] tracking-[2.5px] text-[var(--fs-muted)] mb-2">THE WANDERER'S LEDGER</div>
+      <h2 class="text-[20px] font-bold m-0 mb-1 text-[var(--fs-ink)]">BILL OF SALE</h2>
+      <div class="flex items-center gap-2.5 justify-center mt-3 mb-6">
+        <div class="h-px w-[46px] bg-[var(--fs-gold)]"></div>
+        <span class="text-[var(--fs-gold)] text-[13px]">✦</span>
+        <div class="h-px w-[46px] bg-[var(--fs-gold)]"></div>
+      </div>
+      <div class="flex justify-between text-[8px] text-[var(--fs-muted)] mb-3 text-left tracking-[.5px] leading-loose">
+        <div>ORDER NO.<br><span class="text-[var(--fs-ink)] text-[10px]">{{ order()!.orderId.slice(0,8).toUpperCase() }}</span></div>
+        <div class="text-right">DATE<br><span class="text-[var(--fs-ink)] text-[10px]">{{ formatDate(order()!.purchasedAt) }}</span></div>
+      </div>
+      <div class="text-[8px] text-[var(--fs-muted)] mb-5 text-left tracking-[.5px] leading-loose">
+        BUYER<br><span class="text-[var(--fs-ink)] text-[10px]">{{ order()!.buyer }}</span>
+      </div>
+      <div class="border-t-[1.5px] border-b-[1.5px] border-[var(--fs-ink)] py-1">
+        <div class="flex justify-between items-start py-3.5 text-left gap-3">
+          <div>
+            <div class="text-[11px] text-[var(--fs-ink)] leading-relaxed">{{ order()!.item.title.toUpperCase() }}</div>
+            <div class="text-[8px] text-[var(--fs-muted)] mt-1">{{ order()!.item.location }} · ×{{ order()!.quantity }}</div>
+          </div>
+          <div class="text-[11px] text-[var(--fs-oxblood)] whitespace-nowrap">{{ order()!.total | itemPrice: order()!.item.location }}</div>
+        </div>
+      </div>
+      <div class="pt-4 pb-1 text-left">
+        <div class="flex justify-between text-[9px] text-[var(--fs-muted)] py-1.5">
+          <span>TOTAL</span>
+          <span class="text-[var(--fs-ink)]">{{ order()!.total | itemPrice: order()!.item.location }}</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-5 my-6">
+        <div class="w-[64px] h-[64px] flex-none rounded-full bg-[var(--fs-oxblood)] text-[#efe7d2] flex items-center justify-center text-[11px] tracking-[1px] -rotate-12 shadow-[0_3px_12px_rgba(43,35,22,.3)]">PAID</div>
+        <p class="text-[8px] leading-loose text-[var(--fs-muted)] text-left m-0">MAY YOUR EDGE STAY KEEN AND YOUR ROAD STAY SHORT.</p>
+      </div>
+      <button
+        class="w-full bg-[var(--fs-ink)] text-[#efe7d2] border-none py-3.5 text-[9px] tracking-[2px] cursor-pointer hover:bg-[var(--fs-forest)]"
+        (click)="close.emit()">◄ RETURN TO STORE</button>
+    </div>
+  }
+</p-dialog>

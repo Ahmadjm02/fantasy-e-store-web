@@ -1,0 +1,38 @@
+@use 'tailwindcss' as *;
+
+/* Design tokens */
+:root {
+  --fs-ink: #2b2316;
+  --fs-parchment-dark: #e7dcc1;
+  --fs-parchment: #efe7d2;
+  --fs-oxblood: #6e3127;
+  --fs-forest: #3a4a32;
+  --fs-forest-hover: #2f3d29;
+  --fs-gold: #9a7330;
+  --fs-muted: #5b5340;
+  --fs-very-muted: #8a7f63;
+}
+
+* { font-family: 'Silkscreen', monospace; box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  min-height: 100%;
+  background: var(--fs-parchment-dark);
+  color: var(--fs-ink);
+}
+
+::selection { background: var(--fs-oxblood); color: var(--fs-parchment); }
+
+@keyframes fs-pulse {
+  0%, 100% { opacity: .15; transform: scale(.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+/* PrimeNG dialog overrides for the receipt */
+.fs-receipt-dialog .p-dialog-header { display: none !important; }
+.fs-receipt-dialog .p-dialog-content {
+  background: transparent;
+  padding: 0;
+  overflow: auto;
+}

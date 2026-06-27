@@ -1,0 +1,42 @@
+<p-dialog
+  [visible]="visible()"
+  [modal]="true"
+  [closable]="false"
+  [dismissableMask]="false"
+  styleClass="fs-receipt-dialog"
+  [style]="{ width: '420px', maxWidth: '95vw' }">
+  <div class="relative bg-[var(--fs-parchment)] p-[40px_34px_32px] text-center">
+    <div class="text-[8px] tracking-[2.5px] text-[var(--fs-muted)] mb-2">THE WANDERER'S LEDGER</div>
+    <h2 class="text-[18px] font-bold m-0 mb-1 text-[var(--fs-ink)]">CONFIRM PURCHASE</h2>
+    <div class="flex items-center gap-2.5 justify-center mt-3 mb-6">
+      <div class="h-px w-[46px] bg-[var(--fs-gold)]"></div>
+      <span class="text-[var(--fs-gold)] text-[13px]">✦</span>
+      <div class="h-px w-[46px] bg-[var(--fs-gold)]"></div>
+    </div>
+    <p class="text-[9px] leading-loose text-[var(--fs-muted)] m-0 mb-2 tracking-[.4px]">
+      YOU ARE ABOUT TO ACQUIRE
+    </p>
+    <div class="text-[13px] font-bold text-[var(--fs-ink)] mb-1">{{ item().title.toUpperCase() }}</div>
+    <div class="text-[20px] text-[var(--fs-oxblood)] mb-6">{{ item().price | itemPrice: item().location }}</div>
+    <p class="text-[8px] leading-loose text-[var(--fs-muted)] m-0 mb-6 tracking-[.4px]">
+      ARE YOU SURE YOU WISH TO STRIKE THIS BARGAIN?
+    </p>
+    <div class="flex flex-col gap-2">
+      <button
+        class="w-full bg-[var(--fs-forest)] text-[#efe7d2] border-none py-3.5 text-[10px] tracking-[2px] cursor-pointer hover:bg-[var(--fs-forest-hover)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        [disabled]="loading()"
+        (click)="confirm.emit()">
+        @if (loading()) {
+          <span class="inline-block w-3 h-3 border border-[#efe7d2] border-t-transparent rounded-full animate-spin"></span>
+          SEALING THE DEAL…
+        } @else {
+          AYE, STRIKE THE BARGAIN ►
+        }
+      </button>
+      <button
+        class="w-full bg-transparent text-[var(--fs-muted)] border border-[rgba(43,35,22,.22)] py-3 text-[8px] tracking-[1.5px] cursor-pointer hover:bg-[rgba(43,35,22,.04)] disabled:opacity-40 disabled:cursor-not-allowed"
+        [disabled]="loading()"
+        (click)="cancel.emit()">◄ NAY, THINK AGAIN</button>
+    </div>
+  </div>
+</p-dialog>

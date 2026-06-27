@@ -1,0 +1,36 @@
+<div
+  class="min-h-screen flex items-center justify-center p-6"
+  style="background:radial-gradient(130% 80% at 50% -10%,rgba(255,255,255,.4),transparent 55%),radial-gradient(120% 100% at 50% 120%,rgba(43,35,22,.12),transparent 55%),var(--fs-parchment-dark)">
+  <div class="w-full max-w-[420px] text-center">
+    <div class="w-[68px] h-[68px] rounded-full border border-[var(--fs-gold)] flex items-center justify-center mx-auto mb-5 bg-[rgba(154,115,48,.07)]">
+      <span class="text-[18px] text-[var(--fs-oxblood)]">WL</span>
+    </div>
+    <div class="text-[9px] tracking-[2px] text-[var(--fs-muted)]">PURVEYOR OF ARMS &amp; ARCANA</div>
+    <h1 class="text-[22px] font-bold mt-3 mb-1 text-[var(--fs-ink)]">THE WANDERER'S LEDGER</h1>
+    <div class="flex items-center gap-3 justify-center my-5 mb-7">
+      <div class="h-px w-[56px] bg-[var(--fs-gold)]"></div>
+      <span class="text-[var(--fs-gold)] text-[11px]">✦</span>
+      <div class="h-px w-[56px] bg-[var(--fs-gold)]"></div>
+    </div>
+    <div class="bg-[rgba(255,255,255,.32)] border border-[rgba(43,35,22,.18)] p-[28px] text-left">
+      <label class="block text-[9px] tracking-[1.5px] text-[var(--fs-oxblood)] mb-2.5">MERCHANT'S MARK</label>
+      <input
+        type="email"
+        [value]="email()"
+        (input)="email.set($any($event.target).value)"
+        class="w-full border border-[rgba(43,35,22,.3)] bg-[rgba(255,255,255,.5)] px-3 py-[11px] text-[11px] text-[var(--fs-ink)] mb-5 outline-none focus:border-[var(--fs-gold)] block">
+      <label class="block text-[9px] tracking-[1.5px] text-[var(--fs-oxblood)] mb-2.5">PASSPHRASE</label>
+      <input
+        type="password"
+        [value]="password()"
+        (input)="password.set($any($event.target).value)"
+        class="w-full border border-[rgba(43,35,22,.3)] bg-[rgba(255,255,255,.5)] px-3 py-[11px] text-[11px] tracking-[3px] text-[var(--fs-muted)] mb-6 outline-none focus:border-[var(--fs-gold)] block">
+      <button
+        class="w-full bg-[var(--fs-forest)] text-[#efe7d2] border-none py-[15px] text-[11px] tracking-[2px] cursor-pointer hover:bg-[var(--fs-forest-hover)] disabled:opacity-60 disabled:cursor-not-allowed block"
+        [disabled]="loading()"
+        (click)="submit()">{{ loading() ? 'ENTERING...' : 'ENTER THE HALL ►' }}</button>
+      <p class="text-[8px] leading-loose text-[var(--fs-muted)] text-center mt-4 tracking-[.5px] m-0">PASSAGE GRANTED BY TOKEN · VALID ONE MOON'S TURN</p>
+    </div>
+    <div class="mt-5 text-[8px] text-[var(--fs-very-muted)] tracking-[1px]">EST. MCXII · FREE CITY OF HALLOWAY</div>
+  </div>
+</div>

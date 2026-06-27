@@ -1,0 +1,23 @@
+@if (totalPages() > 1) {
+  <div class="flex items-center justify-center gap-2 mt-10">
+    <button
+      class="border border-[rgba(43,35,22,.35)] px-3 py-2.5 text-[9px] tracking-[1px] bg-transparent text-[var(--fs-ink)] cursor-pointer hover:bg-[rgba(43,35,22,.08)] disabled:opacity-40 disabled:cursor-not-allowed"
+      [disabled]="page() === 1"
+      (click)="prev()">◄ PREV</button>
+    @for (p of pages(); track $index) {
+      @if (p === '...') {
+        <span class="border border-[rgba(43,35,22,.35)] w-[34px] h-[34px] text-[10px] flex items-center justify-center text-[var(--fs-muted)] select-none">…</span>
+      } @else {
+        <button
+          class="border border-[rgba(43,35,22,.35)] w-[34px] h-[34px] text-[10px] cursor-pointer"
+          [style.background]="p === page() ? 'var(--fs-forest)' : 'transparent'"
+          [style.color]="p === page() ? '#efe7d2' : 'var(--fs-ink)'"
+          (click)="go(p)">{{ p }}</button>
+      }
+    }
+    <button
+      class="border border-[rgba(43,35,22,.35)] px-3 py-2.5 text-[9px] tracking-[1px] bg-transparent text-[var(--fs-ink)] cursor-pointer hover:bg-[rgba(43,35,22,.08)] disabled:opacity-40 disabled:cursor-not-allowed"
+      [disabled]="page() === totalPages()"
+      (click)="next()">NEXT ►</button>
+  </div>
+}

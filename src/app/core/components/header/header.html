@@ -1,0 +1,45 @@
+<header class="sticky top-0 z-10 bg-[var(--fs-ink)] border-b-[3px] border-[var(--fs-gold)]">
+  @if (isMobile()) {
+    <div class="flex items-center justify-between px-3.5 h-[52px] border-b border-white/10">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full border border-[var(--fs-gold)] flex items-center justify-center flex-none">
+          <span class="text-[7px] text-[var(--fs-gold)]">WL</span>
+        </div>
+        <div>
+          <div class="text-[10px] text-[#efe7d2] font-bold tracking-[1.5px] leading-tight">THE WANDERER'S LEDGER</div>
+          <div class="text-[7px] text-[var(--fs-muted)] tracking-[.8px] mt-[2px]">Welcome, {{ user()?.name }}</div>
+        </div>
+      </div>
+      <button
+        class="text-[#efe7d2] cursor-pointer border border-[rgba(239,231,210,.25)] px-3 py-2 text-[7px] tracking-[1.5px] bg-transparent hover:bg-[rgba(239,231,210,.08)] disabled:opacity-40 disabled:cursor-not-allowed"
+        [disabled]="loggingOut()"
+        (click)="logout()">{{ loggingOut() ? '…' : '✕ EXIT' }}</button>
+    </div>
+    <div class="flex items-stretch justify-between px-3.5">
+      <span class="text-[9px] tracking-[1.5px] text-[#efe7d2] py-[10px] border-b-2 border-[var(--fs-gold)] cursor-pointer" (click)="goStore()">STORE</span>
+      <span class="text-[7px] text-[var(--fs-very-muted)] py-[10px] tracking-[.8px]">FREE CITY OF HALLOWAY</span>
+    </div>
+  } @else {
+    <div class="flex items-center justify-between px-7 py-3 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-[30px] h-[30px] rounded-full border border-[var(--fs-gold)] flex items-center justify-center">
+          <span class="text-[8px] text-[var(--fs-gold)]">WL</span>
+        </div>
+        <span class="text-[14px] text-[#efe7d2] font-bold tracking-[1px]">THE WANDERER'S LEDGER</span>
+      </div>
+      <div class="flex items-center gap-3.5">
+        <span class="text-[8px] text-[var(--fs-muted)] tracking-[1px]">Welcome, {{ user()?.name }}</span>
+        <button
+          class="text-[#efe7d2] cursor-pointer border border-[rgba(239,231,210,.3)] px-3 py-1.5 text-[8px] tracking-[1px] bg-transparent hover:bg-[rgba(239,231,210,.08)] disabled:opacity-40 disabled:cursor-not-allowed"
+          [disabled]="loggingOut()"
+          (click)="logout()">{{ loggingOut() ? '…' : 'LOGOUT' }}</button>
+      </div>
+    </div>
+    <div class="flex items-center justify-between px-7">
+      <div class="flex items-stretch">
+        <span class="text-[9px] tracking-[1.5px] text-[#efe7d2] py-[14px] px-[18px] border-b-[3px] border-[var(--fs-gold)] cursor-pointer" (click)="goStore()">STORE</span>
+      </div>
+      <span class="text-[8px] text-[var(--fs-very-muted)] tracking-[1px]">PURVEYORS OF FINE ARMS &amp; ARCANA · FREE CITY OF HALLOWAY</span>
+    </div>
+  }
+</header>

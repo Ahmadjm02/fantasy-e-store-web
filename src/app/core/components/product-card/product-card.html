@@ -1,0 +1,22 @@
+<div
+  class="bg-[var(--fs-parchment)] border border-[rgba(43,35,22,.25)] cursor-pointer flex flex-col h-full transition-[transform,box-shadow] duration-100 hover:-translate-y-[3px] hover:shadow-[0_8px_22px_rgba(43,35,22,.22)]"
+  (click)="inspect.emit(item())">
+  <div
+    class="relative h-[128px] border-b border-[rgba(43,35,22,.18)]"
+    style="background:repeating-linear-gradient(45deg,#d8c9a6 0 10px,#d2c29c 10px 20px)">
+    <img [src]="getImage()" [alt]="item().title" class="w-full h-full object-contain p-4">
+    <span
+      class="absolute top-2 left-2 text-[7px] tracking-[1px] px-1.5 py-0.5 border border-[rgba(43,35,22,.25)] bg-[var(--fs-parchment)]"
+      [style.color]="item().location === 'JO' ? 'var(--fs-oxblood)' : 'var(--fs-forest)'">
+      {{ item().location === 'JO' ? '🇯🇴' : '🇸🇦' }} {{ item().location }}
+    </span>
+  </div>
+  <div class="p-4 flex flex-col flex-1">
+    <h3 class="text-[13px] font-bold tracking-[.5px] text-[var(--fs-oxblood)] border-b-2 border-[var(--fs-gold)] pb-2.5 mb-3 leading-snug m-0">{{ item().title }}</h3>
+    <p class="text-[8px] tracking-[.3px] text-[var(--fs-muted)] leading-loose mb-3.5 flex-1 line-clamp-4 m-0">{{ item().description }}</p>
+    <div class="flex items-center justify-between border-t border-[rgba(43,35,22,.2)] pt-3">
+      <span class="text-[11px] text-[var(--fs-ink)]">{{ item().price | itemPrice: item().location }}</span>
+      <span class="text-[8px] tracking-[.5px] text-[var(--fs-forest)]">INSPECT ►</span>
+    </div>
+  </div>
+</div>

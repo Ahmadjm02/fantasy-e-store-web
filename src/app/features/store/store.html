@@ -1,0 +1,15 @@
+<div class="max-w-[1100px] mx-auto px-6 py-7 pb-12">
+  <div class="flex items-baseline justify-between flex-wrap gap-3 mb-6">
+    <h2 class="text-[16px] font-bold text-[var(--fs-ink)] m-0">THE STORE</h2>
+    <div class="flex items-center gap-2.5 flex-wrap">
+      <span class="text-[8px] text-[var(--fs-muted)] tracking-[1px]">
+        SHOWING {{ from() }}–{{ to() }} OF {{ shop.total() }}
+      </span>
+      <app-location-filter [active]="shop.country()" (countryChange)="onCountryChange($event)" />
+      <app-sort-toggle [sort]="shop.sort()" (sortChange)="onSortChange($event)" />
+      <app-page-size-selector [current]="shop.pageSize()" (sizeChange)="onSizeChange($event)" />
+    </div>
+  </div>
+  <app-item-listing [items]="shop.items()" (inspect)="onInspect($event)" />
+  <app-pagination [page]="shop.page()" [totalPages]="shop.totalPages()" (pageChange)="onPageChange($event)" />
+</div>

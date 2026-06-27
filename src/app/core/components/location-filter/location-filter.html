@@ -1,0 +1,14 @@
+<div class="flex items-center gap-1.5">
+  <button
+    class="flex items-center gap-1 border px-2.5 py-[5px] text-[9px] tracking-[1px] cursor-pointer"
+    [style.background]="active() === 'JO' ? 'var(--fs-forest)' : 'transparent'"
+    [style.color]="active() === 'JO' ? '#efe7d2' : 'var(--fs-ink)'"
+    [style.border-color]="active() === 'JO' ? 'var(--fs-forest)' : 'rgba(43,35,22,.25)'"
+    (click)="toggle('JO')">🇯🇴 JO</button>
+  <button
+    class="flex items-center gap-1 border px-2.5 py-[5px] text-[9px] tracking-[1px] cursor-pointer"
+    [style.background]="active() === 'SA' ? 'var(--fs-forest)' : 'transparent'"
+    [style.color]="active() === 'SA' ? '#efe7d2' : 'var(--fs-ink)'"
+    [style.border-color]="active() === 'SA' ? 'var(--fs-forest)' : 'rgba(43,35,22,.25)'"
+    (click)="toggle('SA')">🇸🇦 SA</button>
+</div>

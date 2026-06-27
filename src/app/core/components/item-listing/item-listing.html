@@ -1,0 +1,11 @@
+@if (items().length) {
+  <div
+    class="grid gap-[18px]"
+    [style.grid-template-columns]="isMobile() ? '1fr' : 'repeat(auto-fill, minmax(240px, 1fr))'">
+    @for (item of items(); track item.id) {
+      <app-product-card [item]="item" (inspect)="inspect.emit($event)" />
+    }
+  </div>
+} @else {
+  <div class="text-center py-16 text-[var(--fs-muted)] text-[9px] tracking-[2px]">NO ITEMS FOUND</div>
+}

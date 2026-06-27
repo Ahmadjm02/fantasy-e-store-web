@@ -1,0 +1,10 @@
+<div class="flex items-center gap-1.5 text-[8px] tracking-[1px] text-[var(--fs-muted)]">
+  <span>PER PAGE</span>
+  @for (s of sizes; track s) {
+    <button
+      class="border border-[rgba(43,35,22,.25)] w-[30px] h-[24px] text-[9px] cursor-pointer"
+      [style.background]="s === current() ? 'var(--fs-forest)' : 'transparent'"
+      [style.color]="s === current() ? '#efe7d2' : 'var(--fs-ink)'"
+      (click)="select(s)">{{ s }}</button>
+  }
+</div>

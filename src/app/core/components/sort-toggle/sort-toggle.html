@@ -1,0 +1,6 @@
+<button
+  class="flex items-center gap-1.5 border px-2.5 py-[5px] text-[9px] tracking-[1px] cursor-pointer"
+  [style.background]="sort() !== '' ? 'var(--fs-forest)' : 'transparent'"
+  [style.color]="sort() !== '' ? '#efe7d2' : 'var(--fs-ink)'"
+  [style.border-color]="sort() !== '' ? 'var(--fs-forest)' : 'rgba(43,35,22,.25)'"
+  (click)="toggle()">{{ icon() }} {{ label() }}</button>
